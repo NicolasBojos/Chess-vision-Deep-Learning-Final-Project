@@ -3,3 +3,4 @@ datasets/
 /datasets/
 *.zone.identifier
 datasets/
+*.Zone.Identifier
