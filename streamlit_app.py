@@ -83,7 +83,8 @@ if uploaded_file is not None:
         crossings = np.array(crossings)
 
         # **Step 2: Structure Crossings into an 8×8 Grid**
-        structured_grid = chess_utils.structure_crossings_into_grid(crossings)
+        structured_grid = chess_utils.complete_grid(crossings, image.shape)
+
 
         # **Step 3: Generate Grid and Draw Infinite Lines**
         grid = chess_utils.complete_grid(structured_grid, image.shape)
