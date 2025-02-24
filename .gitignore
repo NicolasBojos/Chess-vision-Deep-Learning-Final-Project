@@ -1,2 +1,5 @@
 datasets/
 *zone.identifier
+/datasets/
+*.zone.identifier
+datasets/
