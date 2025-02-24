@@ -1,9 +1,11 @@
 import os
-os.system("pip uninstall opencv-python opencv-python-headless -y")
-os.system("pip install opencv-python-headless")
 
-import cv2
-
+# Check if OpenCV is installed
+try:
+    import cv2
+except ImportError:
+    os.system("pip install opencv-python-headless")
+    import cv2  # Try importing again after installation
 
 import streamlit as st
 import cv2
