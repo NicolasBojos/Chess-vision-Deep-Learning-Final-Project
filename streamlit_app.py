@@ -1,3 +1,10 @@
+import os
+os.system("pip uninstall opencv-python opencv-python-headless -y")
+os.system("pip install opencv-python-headless")
+
+import cv2
+
+
 import streamlit as st
 import cv2
 import numpy as np
