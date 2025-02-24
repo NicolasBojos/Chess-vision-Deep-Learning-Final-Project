@@ -6,6 +6,15 @@ try:
 except ImportError:
     os.system("pip install opencv-python-headless")
     import cv2  # Try importing again after installation
+    
+import asyncio
+
+# Fix event loop issue in Streamlit
+try:
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+except AttributeError:
+    pass
+
 
 import streamlit as st
 import cv2
