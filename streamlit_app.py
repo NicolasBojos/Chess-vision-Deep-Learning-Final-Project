@@ -1,6 +1,5 @@
 import os
 
-# Check if OpenCV is installed
 try:
     import cv2
 except ImportError:
@@ -8,24 +7,22 @@ except ImportError:
     import cv2  # Try importing again after installation
     
 import asyncio
-
-# Fix event loop issue in Streamlit
-try:
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-except AttributeError:
-    pass
-
-
 import streamlit as st
-import cv2
 import numpy as np
 from PIL import Image
 from ultralytics import YOLO
 import os
 import sys
+import asyncio
+
+# Fix event loop issue in Streamlit Cloud (PyTorch)
+try:
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+except AttributeError:
+    pass
 
 # Ensure the script's directory is in sys.path
-script_dir = os.path.dirname(os.path.abspath(__file__))  # Fixed incorrect _file_
+script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(script_dir)
 
 # Now try to import chess_utils
@@ -85,8 +82,8 @@ if uploaded_file is not None:
         # Convert to NumPy array
         crossings = np.array(crossings)
 
-        # **Step 2: Cluster Crossings into 8 Rows**
-        structured_grid = chess_utils.cluster_board_crossings(crossings)
+        # **Step 2: Structure Crossings into an 8×8 Grid**
+        structured_grid = chess_utils.structure_crossings_into_grid(crossings)
 
         # **Step 3: Generate Grid and Draw Infinite Lines**
         grid = chess_utils.complete_grid(structured_grid, image.shape)
